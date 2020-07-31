@@ -3,8 +3,8 @@
 # base operating system image purpose built for containers. For more information
 # see https://developers.redhat.com/products/rhel/ubi
 #
-FROM registry.access.redhat.com/ubi8/ubi
-USER root
+from registry.access.redhat.com/ubi8/ubi
+user root
 
 #
 # Friendly reminder that generated container images are from an open source
