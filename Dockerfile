@@ -3,7 +3,7 @@
 # base operating system image purpose built for containers. For more information
 # see https://developers.redhat.com/products/rhel/ubi
 #
-FROM registry.access.redhat.com/ubi8/ubi:8.2
+FROM registry.access.redhat.com/ubi8/ubi:8.3
 USER root
 
 ARG container_version
@@ -47,7 +47,8 @@ RUN yum -y update && \
     yum -y install --disablerepo=* \
     --enablerepo=ubi-8-appstream \
     --enablerepo=ubi-8-baseos \
-    libnl3 net-tools zip openssl hostname iproute /tmp/falcon-sensor.rpm && \
+    libnl3 net-tools zip openssl hostname iproute procps-ng && \
+    rpm -ivh --nodigest --nofiledigest /tmp/falcon-sensor.rpm && \
     yum -y clean all && rm -rf /var/cache/yum && \
     rm -f /tmp/falcon-sensor.rpm
 
